@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/*
+ * TYPOGRAPHY SYSTEM
+ * --font-heading  →  Gotham Ultra (not yet loaded — upload font file to enable)
+ *                    Currently falls back to Inter until the file is provided.
+ * --font-body     →  Courier New (web-safe)
+ *
+ * To activate Gotham Ultra: add a @font-face block here pointing to the
+ * uploaded font file, then change --font-heading to 'Gotham Ultra'.
+ */
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: var(--app-font-sans);
+  --radius: .5rem;
+}
+
+:root {
+  --background: 0 0% 5%;
+  --foreground: 40 14% 94%;
+  --border: 40 14% 94% / 0.07;
+  
+  --card: 0 0% 8%;
+  --card-foreground: 40 14% 94%;
+  --card-border: 40 14% 94% / 0.07;
+  
+  --popover: 0 0% 5%;
+  --popover-foreground: 40 14% 94%;
+  --popover-border: 40 14% 94% / 0.07;
+  
+  --primary: 13 76% 52%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 40 14% 94%;
+  
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+  
+  --accent: 13 76% 52%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --input: 40 14% 94% / 0.1;
+  --ring: 13 76% 52%;
+  
+  --app-font-sans: 'Courier New', Courier, monospace;
+  --app-font-heading: 'Inter', sans-serif; /* swap to 'Gotham Ultra' once font file is uploaded */
+}
+
+.dark {
+  --background: 0 0% 5%;
+  --foreground: 40 14% 94%;
+  --border: 40 14% 94% / 0.07;
+  
+  --card: 0 0% 8%;
+  --card-foreground: 40 14% 94%;
+  --card-border: 40 14% 94% / 0.07;
+  
+  --popover: 0 0% 5%;
+  --popover-foreground: 40 14% 94%;
+  --popover-border: 40 14% 94% / 0.07;
+  
+  --primary: 13 76% 52%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 40 14% 94%;
+  
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 60%;
+  
+  --accent: 13 76% 52%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+
+  --input: 40 14% 94% / 0.1;
+  --ring: 13 76% 52%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* ── Heading typography ──────────────────────────────────────────────────── */
+  /* Gotham Ultra placeholder: swap --app-font-heading once font file is added */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--app-font-heading);
+    text-transform: uppercase;
+    letter-spacing: inherit; /* preserve per-element tracking */
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+.animate-orb-drift {
+  animation: orb-drift 15s ease-in-out infinite alternate;
+}
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes orb-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}

@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "RunFrenzy"
+version = "1.0.0"
+id = "artifacts/runfrenzy"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20410
+
+[services.development]
+run = "pnpm --filter @workspace/runfrenzy run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/runfrenzy", "run", "build" ]
+publicDir = "artifacts/runfrenzy/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20410"
+BASE_PATH = "/"
